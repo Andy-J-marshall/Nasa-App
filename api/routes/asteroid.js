@@ -6,7 +6,7 @@ router.get('/', async function (req, res, next) {
     try {
         const date = new Date(req.query.date);
         const formattedDate = date.toISOString().substring(0, 10);
-        const apiKey = process.env.API_KEY; // TODO pass in as env variable
+        const apiKey = process.env.API_KEY;
         const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${formattedDate}&end_date=${formattedDate}&api_key=${apiKey}`);
         const spaceObjects = response.data.near_earth_objects[formattedDate];
 
@@ -34,7 +34,12 @@ router.get('/', async function (req, res, next) {
 
         res.send(asteroidBody);
     } catch (error) {
-        res.status(400).send('Cannot find information'); // TODO Make sure app handles the error state
+        const statusCode = error.response.status;
+        if (statusCode === 403) {
+            res.status(403).send('NASA API key is invalid. Update your local environment variable');
+        } else {
+            res.status(400).send('Error retrieving Asteroid data from NASA');
+        }
     }
 });
 

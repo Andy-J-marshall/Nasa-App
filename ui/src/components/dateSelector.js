@@ -16,6 +16,7 @@ function DateSelector(props) {
     // TODO margins
 
     // TODO DO WE NEED BUTTON? DO IT WITH ONCHANGE INSTEAD?
+    // TODO need to sanitize the date range? In here or the API?
     return (
         <div>
             <DatePicker dateFormat='dd MMMM yyyy' selected={date} onChange={(newDate) => handleDate(newDate)} />

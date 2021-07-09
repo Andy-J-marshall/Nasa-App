@@ -2,8 +2,6 @@ import { Card, ListGroup, Badge } from 'react-bootstrap';
 import asteroidImg from '../assets/asteroid.png';
 import dangerAsteroidImg from '../assets/dangerAsteroid.png';
 
-// TODO add css classes instead of inline
-
 function Asteroid(props) {
     return (
         <div>
