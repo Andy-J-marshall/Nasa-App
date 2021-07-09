@@ -9,9 +9,8 @@ function AsteroidInfo() {
     const [asteroidResponse, setAsteroidResponse] = useState();
     const [errorResponse, setErrorResponse] = useState();
     const [successfulSearch, setSuccessfulSearch] = useState();
-    const [date, setDate] = useState(new Date());
 
-    async function getAsteroidInfo() {
+    async function getAsteroidInfo(date) {
         const options = {
             params: { date },
             method: 'get',
@@ -35,7 +34,7 @@ function AsteroidInfo() {
     return (
         <div className='asteroid-info' id='asteroidInfo'>
             <h2 style={{ marginLeft: '2rem' }}>SELECT A DATE</h2>
-            <DateSelector dateCallback={setDate} searchCallback={getAsteroidInfo} />
+            <DateSelector searchCallback={getAsteroidInfo} />
 
             {errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {successfulSearch && asteroidResponse && <div>
