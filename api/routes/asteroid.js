@@ -6,8 +6,7 @@ router.get('/', async function (req, res, next) {
     try {
         const date = new Date(req.query.date);
         const formattedDate = date.toISOString().substring(0, 10);
-        // TODO change key to environment config?
-        const apiKey = ''; // TODO pass in as env variable
+        const apiKey = process.env.API_KEY; // TODO pass in as env variable
         const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${formattedDate}&end_date=${formattedDate}&api_key=${apiKey}`);
         const spaceObjects = response.data.near_earth_objects[formattedDate];
 

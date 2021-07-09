@@ -1,15 +1,13 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
 ## TODO
-Create backend
-Git
 More pages
 Menu bar
 Footer
-Integrate with API: https://api.nasa.gov/index.html
 
+## Environment config
+Create a .env file in the /api folder with the API_KEY for the NASA public APIs. An API key can be generated here:
+https://api.nasa.gov/index.html#signUp
 
 ## Available Scripts
 
