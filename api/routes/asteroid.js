@@ -7,8 +7,8 @@ router.get('/', async function (req, res, next) {
         const dateFromRequest = new Date(req.query.date);
         const formattedDate = checkDateIsValid(dateFromRequest).toISOString().substring(0, 10);
         const response = await nasaGetAsteroidRequest(formattedDate);
+
         const spaceObjects = response.near_earth_objects[formattedDate];
-        
         const asteroidArray = processAsteroidData(spaceObjects);
         const dangerousCount = asteroidArray.filter(asteroid => asteroid.hazardous).length;
         const asteroidBody = {
@@ -52,18 +52,22 @@ function processAsteroidData(spaceObjects) {
     return asteroidArray;
 }
 
-// TODO move to a helper file?
 function checkDateIsValid(date, acceptedDateRangeInYears = 20) {
     let selectedDate = date;
     if (Object.prototype.toString.call(selectedDate) !== '[object Date]') {
         selectedDate = new Date();
         console.log('Invalid date, setting to today instead');
     }
-    const dateInt = selectedDate.getTime();
-    const today = new Date();
-    const earliestDateInt = new Date().setYear(today.getFullYear() - acceptedDateRangeInYears);
-    const latestDateInt = new Date().setYear(today.getFullYear() + acceptedDateRangeInYears);
 
+    const earliestDate = new Date();
+    earliestDate.setHours(1, 0, 0, 0);
+    const latestDate = new Date();
+    latestDate.setHours(24, 59, 59, 999);
+    const earliestDateInt = earliestDate.setYear(earliestDate.getFullYear() - acceptedDateRangeInYears);
+    const latestDateInt = latestDate.setYear(latestDate.getFullYear() + acceptedDateRangeInYears);
+
+    selectedDate.setHours(1, 0, 0, 0);
+    const dateInt = selectedDate.getTime();
     if (dateInt < earliestDateInt || dateInt > latestDateInt) {
         selectedDate = new Date();
         console.log('Selected date outside the accepted range, setting to today instead');

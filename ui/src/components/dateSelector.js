@@ -7,19 +7,32 @@ function DateSelector(props) {
 
     function handleDate(date) {
         setDate(date);
+        // TODO only make request if date is different to last one?
         props.searchCallback(date)
     }
 
     // TODO make it look prettier
-    // TODO date button
     // TODO margins
 
-    // TODO need to sanitize the date range? In here or the API? Seems to limit to 100 years in past and future
     return (
         <div>
-            <DatePicker dateFormat='dd MMMM yyyy' selected={date} onChange={(newDate) => handleDate(newDate)} />
+            <DatePicker
+                todayButton='Today'
+                placeholderText="Select a date"
+                startOpen={true}
+                selected={date}
+                onChange={(newDate) => handleDate(newDate)}
+                minDate={dateSelector(props.yearRange - (2 * props.yearRange))}
+                maxDate={dateSelector(props.yearRange)}
+                dateFormat='dd MMMM yyyy'
+            />
         </div>
     )
 };
+
+function dateSelector(numberOfYearsInFutureOrPast) {
+    const today = new Date();
+    return new Date().setYear(today.getFullYear() + numberOfYearsInFutureOrPast);
+}
 
 export default DateSelector;

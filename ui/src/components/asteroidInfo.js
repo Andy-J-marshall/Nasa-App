@@ -34,7 +34,7 @@ function AsteroidInfo() {
     return (
         <div className='asteroid-info' id='asteroidInfo'>
             <h2 style={{ marginLeft: '2rem' }}>SELECT A DATE</h2>
-            <DateSelector searchCallback={getAsteroidInfo} />
+            <DateSelector yearRange={20} searchCallback={getAsteroidInfo} />
 
             {errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {successfulSearch && asteroidResponse && <div>
