@@ -4,27 +4,12 @@ const axios = require('axios');
 
 router.get('/', async function (req, res, next) {
     try {
-        const date = new Date(req.query.date);
-        const formattedDate = date.toISOString().substring(0, 10);
-        const apiKey = process.env.API_KEY;
-        const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${formattedDate}&end_date=${formattedDate}&api_key=${apiKey}`);
-        const spaceObjects = response.data.near_earth_objects[formattedDate];
-
-        const asteroidArray = [];
-        spaceObjects.forEach(asteroid => {
-            const minDiam = asteroid.estimated_diameter.meters.estimated_diameter_min;
-            const maxDiam = asteroid.estimated_diameter.meters.estimated_diameter_max;
-            const averageDiam = ((maxDiam * minDiam) / 2).toFixed(2);
-            const asteroidInfo = {
-                name: asteroid.name,
-                hazardous: asteroid.is_potentially_hazardous_asteroid,
-                diameterInMetres: averageDiam,
-                missDistanceInKm: (asteroid.close_approach_data[0].miss_distance.kilometers * 1).toFixed(2),
-                velocityKmpH: (asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour * 1).toFixed(2)
-            };
-            asteroidArray.push(asteroidInfo);
-        });
-
+        const dateFromRequest = new Date(req.query.date);
+        const formattedDate = checkDateIsValid(dateFromRequest).toISOString().substring(0, 10);
+        const response = await nasaGetAsteroidRequest(formattedDate);
+        const spaceObjects = response.near_earth_objects[formattedDate];
+        
+        const asteroidArray = processAsteroidData(spaceObjects);
         const dangerousCount = asteroidArray.filter(asteroid => asteroid.hazardous).length;
         const asteroidBody = {
             totalNumber: spaceObjects.length,
@@ -42,5 +27,48 @@ router.get('/', async function (req, res, next) {
         }
     }
 });
+
+async function nasaGetAsteroidRequest(date) {
+    const apiKey = process.env.API_KEY;
+    const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=${apiKey}`);
+    return response.data;
+}
+
+function processAsteroidData(spaceObjects) {
+    const asteroidArray = [];
+    spaceObjects.forEach(asteroid => {
+        const minDiam = asteroid.estimated_diameter.meters.estimated_diameter_min;
+        const maxDiam = asteroid.estimated_diameter.meters.estimated_diameter_max;
+        const averageDiam = ((maxDiam * minDiam) / 2).toFixed(2);
+        const asteroidInfo = {
+            name: asteroid.name,
+            hazardous: asteroid.is_potentially_hazardous_asteroid,
+            diameterInMetres: averageDiam,
+            missDistanceInKm: (asteroid.close_approach_data[0].miss_distance.kilometers * 1).toFixed(2),
+            velocityKmpH: (asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour * 1).toFixed(2)
+        };
+        asteroidArray.push(asteroidInfo);
+    });
+    return asteroidArray;
+}
+
+// TODO move to a helper file?
+function checkDateIsValid(date, acceptedDateRangeInYears = 20) {
+    let selectedDate = date;
+    if (Object.prototype.toString.call(selectedDate) !== '[object Date]') {
+        selectedDate = new Date();
+        console.log('Invalid date, setting to today instead');
+    }
+    const dateInt = selectedDate.getTime();
+    const today = new Date();
+    const earliestDateInt = new Date().setYear(today.getFullYear() - acceptedDateRangeInYears);
+    const latestDateInt = new Date().setYear(today.getFullYear() + acceptedDateRangeInYears);
+
+    if (dateInt < earliestDateInt || dateInt > latestDateInt) {
+        selectedDate = new Date();
+        console.log('Selected date outside the accepted range, setting to today instead');
+    }
+    return selectedDate;
+}
 
 module.exports = router;
