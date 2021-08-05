@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+// TODO add body-parser?
 const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
