@@ -4,7 +4,7 @@ import NavigationBar from './navigationBar';
 function Header() {
     return (
         <div>
-            <Jumbotron>
+            <Jumbotron style={{ margin: '0' }}>
                 <h1>NASA Information Centre</h1>
             </Jumbotron>
             <NavigationBar />

@@ -1,7 +1,27 @@
-/* Need to sort out CSS for whole app */
-
-.asteroid-info {
+/* TODO Need to sort out CSS for whole app */
+body {
   background-color: #010817;
+}
+
+#asteroidInfo {
   color: white;
-  height: 800px;
+  margin: 2rem 2rem 0rem 2rem;
+}
+
+.asteroid {
+  width: 23rem;
+  height: 23rem;
+  margin: 1.5rem;
+  background-size: auto;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.asteroid-text {
+  color: black;
+  opacity: 0.8;
+}
+
+.navigation-bar {
+  font-size: 25px;
 }

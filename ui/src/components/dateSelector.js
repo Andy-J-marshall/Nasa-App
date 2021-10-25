@@ -4,22 +4,23 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function DateSelector(props) {
     const [date, setDate] = useState(new Date());
+    const [showDateDropdown, setShowDateDropdown] = useState(true)
+    const [count, setCount] = useState(0)
 
-    function handleDate(date) {
-        setDate(date);
-        // TODO only make request if date is different to last one?
-        props.searchCallback(date)
+    function handleDate(newDate) {
+        if (newDate.toString() !== date.toString() || count < 1) {
+            setDate(newDate);
+            props.searchCallback(newDate);
+        }
+        setShowDateDropdown(false);
+        setCount(count + 1);
     }
-
-    // TODO make it look prettier
-    // TODO margins
 
     return (
         <div>
             <DatePicker
                 todayButton='Today'
-                placeholderText="Select a date"
-                startOpen={true}
+                inline={showDateDropdown}
                 selected={date}
                 onChange={(newDate) => handleDate(newDate)}
                 minDate={dateSelector(props.yearRange - (2 * props.yearRange))}
