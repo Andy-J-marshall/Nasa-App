@@ -4,6 +4,8 @@
 More pages
 Menu bar
 Footer
+Tidy up css
+Tidy up Readme
 
 ## Environment config
 Create a .env file in the /api folder with the API_KEY for the NASA public APIs. An API key can be generated here:

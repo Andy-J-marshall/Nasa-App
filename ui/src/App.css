@@ -1,4 +1,3 @@
-/* TODO Need to sort out CSS for whole app */
 body {
   background-color: #010817;
 }
@@ -6,15 +5,15 @@ body {
 #asteroidInfo {
   color: white;
   margin: 2rem 2rem 0rem 2rem;
+  font-size: 19px;
 }
 
 .asteroid {
   width: 23rem;
   height: 23rem;
-  margin: 1.5rem;
+  margin: 2rem 1.5rem;
   background-size: auto;
   color: white;
-  margin-bottom: 4rem;
 }
 
 .asteroid-text {
@@ -24,4 +23,8 @@ body {
 
 .navigation-bar {
   font-size: 25px;
+}
+
+.date-selector {
+  margin-top: 1rem;
 }

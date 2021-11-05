@@ -9,7 +9,7 @@ function NavigationBar() {
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav>
-                        <Nav.Link href='#asteroidInfo'>Asteroid Finder</Nav.Link>
+                        <Nav.Link href='#asteroidInfo'>Asteroids</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -33,15 +33,17 @@ function AsteroidInfo() {
 
     return (
         <div id='asteroidInfo'>
-            <h2>Select a date:</h2>
+            <h2>Asteroids</h2>
+            <p>This page will show you information about the asteroids near Earth.</p>
+            <p>Select a date:</p>
             <DateSelector yearRange={20} searchCallback={getAsteroidInfo} />
             {currentlySearching && <p>Loading</p>}
             {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && successfulSearch && asteroidResponse && <div>
                 {<div style={{ marginTop: '1.5rem' }} >
                     <h2>Overview</h2>
-                    <p>Total number of asteroids in the vicinity of Earth: {asteroidResponse.totalNumber}</p>
-                    <p>Total number of dangerous asteroids: {asteroidResponse.totalDangerousNumber}</p>
+                    <p>Asteroids in the vicinity of Earth: {asteroidResponse.totalNumber}</p>
+                    <p>Potentially dangerous asteroids: {asteroidResponse.totalDangerousNumber}</p>
                 </div>}
                 {asteroidResponse.totalNumber > 0 && <h2 style={{ marginTop: '2rem' }}>Asteroids</h2>}
                 <CardGroup>

@@ -17,7 +17,7 @@ function DateSelector(props) {
     }
 
     return (
-        <div>
+        <div className='date-selector'>
             <DatePicker
                 todayButton='Today'
                 inline={showDateDropdown}
