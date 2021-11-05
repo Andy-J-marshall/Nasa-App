@@ -9,7 +9,9 @@ function NavigationBar() {
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav>
+                        {/* TODO I'm not sure this is directing to these IDs correctly - need to check */}
                         <Nav.Link href='#asteroidInfo'>Asteroids</Nav.Link>
+                        <Nav.Link href='#marsPhoto'>Mars</Nav.Link> 
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

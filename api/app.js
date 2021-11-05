@@ -9,16 +9,11 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const earthRouter = require('./routes/earth');
 const marsRouter = require('./routes/mars');
 const asteroidRouter = require('./routes/asteroid');
 
 // TODO tidy this file up
 const app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(cors());
 app.use(logger('dev'));
@@ -29,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/earth', earthRouter);
 app.use('/mars', marsRouter);
 app.use('/asteroid', asteroidRouter);
 

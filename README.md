@@ -7,6 +7,10 @@ Footer
 Tidy up css
 Tidy up Readme
 
+## NASA API
+The NASA API documentation can be found here:
+https://api.nasa.gov/
+
 ## Environment config
 Create a .env file in the /api folder with the API_KEY for the NASA public APIs. An API key can be generated here:
 https://api.nasa.gov/index.html#signUp
