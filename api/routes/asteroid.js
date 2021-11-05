@@ -35,7 +35,8 @@ async function nasaGetAsteroidRequest(date) {
 }
 
 function processAsteroidData(spaceObjects) {
-    const asteroidArray = [];
+    const dangerousAsteroidArray = [];
+    const safeAsteroidArray = [];
     spaceObjects.forEach(asteroid => {
         const minDiam = asteroid.estimated_diameter.meters.estimated_diameter_min;
         const maxDiam = asteroid.estimated_diameter.meters.estimated_diameter_max;
@@ -47,9 +48,13 @@ function processAsteroidData(spaceObjects) {
             missDistanceInKm: (asteroid.close_approach_data[0].miss_distance.kilometers * 1).toFixed(2),
             velocityKmpH: (asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour * 1).toFixed(2)
         };
-        asteroidArray.push(asteroidInfo);
+        if (asteroid.is_potentially_hazardous_asteroid) {
+            dangerousAsteroidArray.push(asteroidInfo);
+        } else {
+            safeAsteroidArray.push(asteroidInfo);
+        }
     });
-    return asteroidArray;
+    return dangerousAsteroidArray.concat(safeAsteroidArray);
 }
 
 function checkDateIsValid(date, acceptedDateRangeInYears = 20) {

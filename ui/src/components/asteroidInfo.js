@@ -31,8 +31,6 @@ function AsteroidInfo() {
         }
     }
 
-    // TODO order by dangerous ones?
-
     return (
         <div id='asteroidInfo'>
             <h2>Select a date:</h2>
