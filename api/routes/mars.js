@@ -2,22 +2,26 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+const apiKey = process.env.API_KEY;
+
 router.get('/', async function (req, res, next) {
     try {
-        // TODO work on this next
-        const apiKey = process.env.API_KEY;
-        // TODO the "sol" determines the data coming back. Customise this? Randomise? Make it an option to pass in?
-        const nasaApiResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`);
-        const photos = nasaApiResponse.data.photos[0]; // TODO randomise obj it returns rather than hard coding to 0
+        const reqDate = req.query.date;
+        // const date = reqDate.toISOString().substring(0, 10)
+        const nasaApiResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${reqDate}&api_key=${apiKey}`);
 
-        const name = photos.camera.full_name;
-        const date = photos.earth_date;
-        const img = photos.img_src;
-        
+        const photos = nasaApiResponse.data.photos;
+        const photoIdToReturn = Math.floor(Math.random() * photos.length) + 1;
+        const photo = photos[photoIdToReturn];
         const response = {
-            name,
-            date,
-            img,
+            name: photo.camera.full_name,
+            sol: photo.sol, // Martian rotation or day on it was taken, counting up from the rover's landing date
+            img: photo.img_src,
+            rover: {
+                landingDate: photo.rover.landing_date,
+                launchDate: photo.rover.launch_date,
+                status: photo.rover.status,
+            },
         }
         res.status(200).send(response);
     } catch (error) {
