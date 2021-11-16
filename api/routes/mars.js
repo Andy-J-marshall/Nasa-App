@@ -13,23 +13,16 @@ router.get('/', async function (req, res, next) {
 
         const photos = nasaApiResponse.data.photos;
         const numberOfPhotos = photos.length;
-        // TODO handle this in a better way?
         if (numberOfPhotos < 1) {
             res.status(200).send({
-                name: null,
-                sol: null,
-                img: null, // TODO return a funny image?
-                rover: {
-                    landingDate: null,
-                    launchDate: null,
-                    status: null,
-                },
+                imageFound: false,
             });
         }
 
         const photoIdToReturn = Math.floor(Math.random() * numberOfPhotos) + 1;
         const photo = photos[photoIdToReturn];
         const response = {
+            imageFound: true,
             name: photo.camera.full_name,
             sol: photo.sol, // Martian rotation or day on it was taken, counting up from the rover's landing date
             img: photo.img_src,

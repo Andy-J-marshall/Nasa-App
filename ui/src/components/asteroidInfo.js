@@ -33,6 +33,7 @@ function AsteroidInfo() {
 
     return (
         <div id='asteroid-info'>
+            {/* TODO change this to a home page with the date selector. Then load in asteroid and mars pages below */}
             <h2>Asteroids</h2>
             <p>This page will show you information about the asteroids near Earth.</p>
             <p>Select a date:</p>
