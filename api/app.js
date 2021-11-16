@@ -8,7 +8,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const marsRouter = require('./routes/mars');
 const asteroidRouter = require('./routes/asteroid');
 
@@ -23,7 +22,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/mars', marsRouter);
 app.use('/asteroid', asteroidRouter);
 

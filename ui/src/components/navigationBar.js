@@ -1,7 +1,7 @@
 import { Navbar, Nav } from 'react-bootstrap';
 
 function NavigationBar() {
-    // TODO add more hrefs to this
+    // TODO tidy this up
     return (
         <div className='navigation-bar' id='home'>
             <Navbar variant='dark' bg='dark' expand='lg'>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { CardGroup } from 'react-bootstrap';
 import Asteroid from './asteroid';
 import DateSelector from './dateSelector';
 import ErrorMessage from './errorMessage';
-import axios from 'axios';
 
 function AsteroidInfo() {
     const [asteroidResponse, setAsteroidResponse] = useState();
@@ -32,7 +32,7 @@ function AsteroidInfo() {
     }
 
     return (
-        <div id='asteroidInfo'>
+        <div id='asteroid-info'>
             <h2>Asteroids</h2>
             <p>This page will show you information about the asteroids near Earth.</p>
             <p>Select a date:</p>

@@ -2,10 +2,40 @@ body {
   background-color: #010817;
 }
 
-#asteroidInfo {
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#asteroid-info {
   color: white;
   margin: 2rem 2rem 0rem 2rem;
   font-size: 19px;
+}
+
+#mars {
+  color: white;
+  margin: 2rem 2rem 0rem 2rem;
+  font-size: 19px;
+}
+
+#mars-photo {
+  border: 2rem;
+  border-radius: 5%;
+  width: 50%;
+  height: 50%;
+}
+
+.image-container {
+  font-size: 12px;
+  position: relative;
+  color: white;
+}
+
+.top-left {
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
 
 .asteroid {
