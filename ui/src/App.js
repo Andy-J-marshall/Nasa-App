@@ -1,15 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/header';
-import AsteroidInfo from './components/asteroidInfo';
-import MarsPhoto from './components/marsPhoto';
+import Home from './components/home';
 
 function App() {
   return (
     <div id='app'>
       <Header />
-      <AsteroidInfo />
-      <MarsPhoto />
+      <Home />
+      {/* TODO add footer here */}
     </div>
   );
 }

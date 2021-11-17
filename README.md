@@ -6,6 +6,7 @@ Menu bar
 Footer
 Tidy up css
 Tidy up Readme
+Create on package.json file to make it easier to install. Maybe docker?
 
 ## NASA API
 The NASA API documentation can be found here:

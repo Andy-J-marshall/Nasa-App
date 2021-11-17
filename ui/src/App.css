@@ -1,5 +1,5 @@
 body {
-  background-color: #010817;
+  background-color: black;
 }
 
 img {
@@ -7,23 +7,23 @@ img {
   height: auto;
 }
 
-#asteroid-info {
+#home {
   color: white;
-  margin: 2rem 2rem 0rem 2rem;
-  font-size: 19px;
-}
-
-#mars {
-  color: white;
-  margin: 2rem 2rem 0rem 2rem;
+  margin: 1.5rem 2rem 0rem 2rem;
   font-size: 19px;
 }
 
 #mars-photo {
   border: 2rem;
   border-radius: 5%;
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
+}
+
+.component {
+  color: white;
+  margin: 2rem 2rem 0rem 0rem;
+  font-size: 19px;
 }
 
 .image-container {
@@ -34,7 +34,7 @@ img {
 
 .top-left {
   position: absolute;
-  top: 25px;
+  top: 60px;
   left: 25px;
 }
 

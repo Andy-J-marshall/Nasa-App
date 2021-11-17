@@ -1,52 +1,26 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { CardGroup } from 'react-bootstrap';
 import Asteroid from './asteroid';
-import DateSelector from './dateSelector';
 import ErrorMessage from './errorMessage';
 
-function AsteroidInfo() {
-    const [asteroidResponse, setAsteroidResponse] = useState();
-    const [errorResponse, setErrorResponse] = useState();
-    const [successfulSearch, setSuccessfulSearch] = useState();
-    const [currentlySearching, setCurrentlySearching] = useState(false);
+function AsteroidInfo(props) {
+    const asteroidResponse = props.asteroidResponse;
+    const currentlySearching = props.currentlySearching;
+    const errorResponse = props.errorResponse;
+    const successfulSearch = props.successfulSearch;
 
-    async function getAsteroidInfo(date) {
-        const options = {
-            params: { date },
-            method: 'get',
-            url: 'http://localhost:9000/asteroid'
-        }
-        try {
-            setCurrentlySearching(true);
-            const res = await axios.request(options);
-            setCurrentlySearching(false);
-            setAsteroidResponse(res.data);
-            setSuccessfulSearch(true);
-        } catch (error) {
-            console.log(error.message);
-            setCurrentlySearching(false);
-            setErrorResponse(error.response.data);
-            setSuccessfulSearch(false);
-        }
-    }
+    // TODO add a percentage of likelihood of dying?
 
     return (
-        <div id='asteroid-info'>
-            {/* TODO change this to a home page with the date selector. Then load in asteroid and mars pages below */}
-            <h2>Asteroids</h2>
-            <p>This page will show you information about the asteroids near Earth.</p>
-            <p>Select a date:</p>
-            <DateSelector yearRange={20} searchCallback={getAsteroidInfo} />
+        <div id='asteroid-info' className='component'>
             {currentlySearching && <p>Loading</p>}
             {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && successfulSearch && asteroidResponse && <div>
+                {asteroidResponse.totalNumber > 0 && <h2 style={{ marginTop: '2rem' }}>Asteroids</h2>}
                 {<div style={{ marginTop: '1.5rem' }} >
-                    <h2>Overview</h2>
                     <p>Asteroids in the vicinity of Earth: {asteroidResponse.totalNumber}</p>
                     <p>Potentially dangerous asteroids: {asteroidResponse.totalDangerousNumber}</p>
                 </div>}
-                {asteroidResponse.totalNumber > 0 && <h2 style={{ marginTop: '2rem' }}>Asteroids</h2>}
                 <CardGroup>
                     {asteroidResponse.asteroids.map((asteroid, index) => {
                         return <Asteroid

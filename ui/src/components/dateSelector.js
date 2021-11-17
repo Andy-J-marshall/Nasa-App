@@ -8,10 +8,10 @@ function DateSelector(props) {
     const [count, setCount] = useState(0)
 
     function handleDate(newDate) {
-        // TODO this isn't relevant for the mars photo API?
         if (newDate.toString() !== date.toString() || count < 1) {
             setDate(newDate);
-            props.searchCallback(newDate);
+            props.marsSearchCallback(newDate);
+            props.asteroidSearchCallback(newDate);
         }
         setShowDateDropdown(false);
         setCount(count + 1);
