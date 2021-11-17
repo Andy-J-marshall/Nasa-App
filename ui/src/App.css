@@ -15,9 +15,9 @@ img {
 
 #mars-photo {
   border: 2rem;
-  border-radius: 5%;
-  width: 40%;
-  height: 40%;
+  border-radius: 3%;
+  width: 46%;
+  height: 46%;
 }
 
 .component {
@@ -34,7 +34,7 @@ img {
 
 .top-left {
   position: absolute;
-  top: 60px;
+  top: 53px;
   left: 25px;
 }
 

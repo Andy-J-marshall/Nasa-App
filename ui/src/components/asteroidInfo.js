@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardGroup } from 'react-bootstrap';
+import { CardGroup, ProgressBar, Spinner } from 'react-bootstrap';
 import Asteroid from './asteroid';
 import ErrorMessage from './errorMessage';
 
@@ -9,18 +9,20 @@ function AsteroidInfo(props) {
     const errorResponse = props.errorResponse;
     const successfulSearch = props.successfulSearch;
 
-    // TODO add a percentage of likelihood of dying?
-
     return (
         <div id='asteroid-info' className='component'>
-            {currentlySearching && <p>Loading</p>}
+            {(currentlySearching || asteroidResponse) && <h2>Asteroids</h2>}
+            {currentlySearching && <Spinner animation='border' />}
             {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && successfulSearch && asteroidResponse && <div>
-                {asteroidResponse.totalNumber > 0 && <h2 style={{ marginTop: '2rem' }}>Asteroids</h2>}
-                {<div style={{ marginTop: '1.5rem' }} >
-                    <p>Asteroids in the vicinity of Earth: {asteroidResponse.totalNumber}</p>
-                    <p>Potentially dangerous asteroids: {asteroidResponse.totalDangerousNumber}</p>
-                </div>}
+                <p>{asteroidResponse.totalNumber} asteroids in the vicinity of Earth ({asteroidResponse.totalDangerousNumber} potentially dangerous). Danger level:</p>
+                <ProgressBar
+                    style={{ width: '46%' }}
+                    now={asteroidResponse.dangerScore}
+                    striped
+                    variant={asteroidResponse.dangerScore > 75 ? 'danger' : 'warning'}
+                    label={`${asteroidResponse.dangerScore}%`}
+                />
                 <CardGroup>
                     {asteroidResponse.asteroids.map((asteroid, index) => {
                         return <Asteroid

@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/header';
 import Home from './components/home';
 
+// TODO create a custom cursor!
 function App() {
   return (
     <div id='app'>

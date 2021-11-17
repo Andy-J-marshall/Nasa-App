@@ -17,24 +17,24 @@ router.get('/', async function (req, res, next) {
             res.status(200).send({
                 imageFound: false,
             });
+        } else {
+            const photoIdToReturn = Math.floor(Math.random() * numberOfPhotos) + 1;
+            const photo = photos[photoIdToReturn];
+            const response = {
+                imageFound: true,
+                name: photo.camera.full_name,
+                sol: photo.sol, // Martian rotation or day on it was taken, counting up from the rover's landing date
+                img: photo.img_src,
+                rover: {
+                    landingDate: photo.rover.landing_date,
+                    launchDate: photo.rover.launch_date,
+                    status: photo.rover.status,
+                },
+            }
+            res.status(200).send(response);
         }
-
-        const photoIdToReturn = Math.floor(Math.random() * numberOfPhotos) + 1;
-        const photo = photos[photoIdToReturn];
-        const response = {
-            imageFound: true,
-            name: photo.camera.full_name,
-            sol: photo.sol, // Martian rotation or day on it was taken, counting up from the rover's landing date
-            img: photo.img_src,
-            rover: {
-                landingDate: photo.rover.landing_date,
-                launchDate: photo.rover.launch_date,
-                status: photo.rover.status,
-            },
-        }
-        res.status(200).send(response);
     } catch (error) {
-        res.status(400).send('Cannot find image');
+        res.status(404).send('Cannot find image');
     }
 });
 

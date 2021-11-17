@@ -1,7 +1,7 @@
 import { Navbar, Nav } from 'react-bootstrap';
 
 function NavigationBar() {
-    // TODO tidy this up. How will it work for the app in it's current state?
+    // TODO Create an About page
     return (
         <div className='navigation-bar'>
             <Navbar variant='dark' bg='dark' expand='lg'>
@@ -9,7 +9,6 @@ function NavigationBar() {
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav>
-                        {/* TODO I'm not sure this is directing to these IDs correctly - need to check */}
                         <Nav.Link href='#asteroid-info'>Asteroids</Nav.Link>
                         <Nav.Link href='#mars'>Mars</Nav.Link> 
                     </Nav>

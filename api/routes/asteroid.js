@@ -11,9 +11,11 @@ router.get('/', async function (req, res, next) {
         const spaceObjects = response.near_earth_objects[formattedDate];
         const asteroidArray = processAsteroidData(spaceObjects);
         const dangerousCount = asteroidArray.filter(asteroid => asteroid.hazardous).length;
+        const dangerScore = calculateDangerScore(spaceObjects.length, dangerousCount);
         const asteroidBody = {
             totalNumber: spaceObjects.length,
             totalDangerousNumber: dangerousCount,
+            dangerScore,
             asteroids: asteroidArray,
         };
 
@@ -78,6 +80,14 @@ function checkDateIsValid(date, acceptedDateRangeInYears = 20) {
         console.log('Selected date outside the accepted range, setting to today instead');
     }
     return selectedDate;
+}
+
+function calculateDangerScore(numberOfAsteroids, numberOfDangerousAsteroids) {
+    const nonDangerousScore = (numberOfAsteroids - numberOfDangerousAsteroids) * 3;
+    const dangerousScore = numberOfDangerousAsteroids * 20;
+    const totalScore = nonDangerousScore + dangerousScore;
+    const dangerScore = totalScore < 100 ? totalScore : 100;
+    return dangerScore;
 }
 
 module.exports = router;

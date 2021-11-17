@@ -9,7 +9,8 @@ function Home() {
     const [asteroidResponse, setAsteroidResponse] = useState();
     const [errorResponse, setErrorResponse] = useState();
     const [successfulSearch, setSuccessfulSearch] = useState();
-    const [currentlySearching, setCurrentlySearching] = useState(false);
+    const [currentlySearchingAsteroids, setCurrentlySearchingAsteroids] = useState(false);
+    const [currentlySearchingMars, setCurrentlySearchingMars] = useState(false);
 
     async function getAsteroidInfo(date) {
         const options = {
@@ -18,14 +19,14 @@ function Home() {
             url: 'http://localhost:9000/asteroid'
         }
         try {
-            setCurrentlySearching(true);
+            setCurrentlySearchingAsteroids(true);
             const res = await axios.request(options);
-            setCurrentlySearching(false);
+            setCurrentlySearchingAsteroids(false);
             setAsteroidResponse(res.data);
             setSuccessfulSearch(true);
         } catch (error) {
             console.log(error.message);
-            setCurrentlySearching(false);
+            setCurrentlySearchingAsteroids(false);
             setErrorResponse(error.response.data);
             setSuccessfulSearch(false);
         }
@@ -40,9 +41,12 @@ function Home() {
             url: 'http://localhost:9000/mars'
         };
         try {
+            setCurrentlySearchingMars(true);
             const res = await axios(options);
+            setCurrentlySearchingMars(false);
             setMarsResponse(res.data);
         } catch (error) {
+            setCurrentlySearchingMars(false);
             console.log(error.message);
         }
     }
@@ -52,12 +56,12 @@ function Home() {
             <h1>Solar System</h1>
             <p>Select a date:</p>
             <DateSelector yearRange={20} asteroidSearchCallback={getAsteroidInfo} marsSearchCallback={getMarsPhoto} />
-            <MarsPhoto marsResponse={marsResponse} />
+            <MarsPhoto marsResponse={marsResponse} currentlySearching={currentlySearchingMars} />
             <AsteroidInfo
                 asteroidResponse={asteroidResponse}
                 errorResponse={errorResponse}
                 successfulSearch={successfulSearch}
-                currentlySearching={currentlySearching}
+                currentlySearching={currentlySearchingAsteroids}
             />
         </div>
     )
