@@ -11,7 +11,7 @@ function AsteroidInfo(props) {
 
     return (
         <div id='asteroid-info' className='component'>
-            {(currentlySearching || asteroidResponse) && <h2>Asteroids</h2>}
+            {(currentlySearching || asteroidResponse || errorResponse) && <h2>Asteroids</h2>}
             {currentlySearching && <Spinner animation='border' />}
             {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && successfulSearch && asteroidResponse && <div>

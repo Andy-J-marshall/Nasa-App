@@ -2,17 +2,21 @@ import dotenv from 'dotenv';
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import martianPicture from '../assets/martians.png';
+import ErrorMessage from './errorMessage';
 
 dotenv.config();
 
 function MarsWeather(props) {
     const marsResponse = props.marsResponse;
     const currentlySearching = props.currentlySearching;
+    const errorResponse = props.errorResponse;
+    const successfulSearch = props.successfulSearch;
 
     return (
         <div id='mars' className='component'>
-            {(currentlySearching || marsResponse) && <h2>Mars Photo of the Day</h2>}
+            {(currentlySearching || marsResponse || errorResponse) && <h2>Mars Photo of the Day</h2>}
             {currentlySearching && <Spinner animation='border' />}
+            {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && marsResponse && !marsResponse.imageFound && renderDefaultImage()}
             {!currentlySearching && marsResponse && marsResponse.imageFound && renderImage(marsResponse)}
         </div>

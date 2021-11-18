@@ -7,8 +7,10 @@ import AsteroidInfo from './asteroidInfo';
 function Home() {
     const [marsResponse, setMarsResponse] = useState();
     const [asteroidResponse, setAsteroidResponse] = useState();
-    const [errorResponse, setErrorResponse] = useState();
-    const [successfulSearch, setSuccessfulSearch] = useState();
+    const [errorResponseAsteroids, setErrorResponseAsteroids] = useState();
+    const [errorResponseMars, setErrorResponseMars] = useState();
+    const [successfulSearchAsteroids, setSuccessfulSearchAsteroids] = useState();
+    const [successfulSearchMars, setSuccessfulSearchMars] = useState();
     const [currentlySearchingAsteroids, setCurrentlySearchingAsteroids] = useState(false);
     const [currentlySearchingMars, setCurrentlySearchingMars] = useState(false);
 
@@ -23,12 +25,12 @@ function Home() {
             const res = await axios.request(options);
             setCurrentlySearchingAsteroids(false);
             setAsteroidResponse(res.data);
-            setSuccessfulSearch(true);
+            setSuccessfulSearchAsteroids(true);
         } catch (error) {
             console.log(error.message);
             setCurrentlySearchingAsteroids(false);
-            setErrorResponse(error.response.data);
-            setSuccessfulSearch(false);
+            setErrorResponseAsteroids(error.response.data);
+            setSuccessfulSearchAsteroids(false);
         }
     }
 
@@ -43,9 +45,12 @@ function Home() {
             const res = await axios(options);
             setCurrentlySearchingMars(false);
             setMarsResponse(res.data);
+            setSuccessfulSearchMars(true);
         } catch (error) {
-            setCurrentlySearchingMars(false);
             console.log(error.message);
+            setCurrentlySearchingMars(false);
+            setErrorResponseMars(error.response.data);
+            setSuccessfulSearchMars(false);
         }
     }
 
@@ -54,12 +59,17 @@ function Home() {
             <h1>Solar System</h1>
             <p>Select a date:</p>
             <DateSelector yearRange={20} asteroidSearchCallback={getAsteroidInfo} marsSearchCallback={getMarsPhoto} />
-            <MarsPhoto marsResponse={marsResponse} currentlySearching={currentlySearchingMars} />
+            <MarsPhoto
+                marsResponse={marsResponse}
+                currentlySearching={currentlySearchingMars}
+                successfulSearch={successfulSearchMars}
+                errorResponse={errorResponseMars}
+            />
             <AsteroidInfo
                 asteroidResponse={asteroidResponse}
-                errorResponse={errorResponse}
-                successfulSearch={successfulSearch}
                 currentlySearching={currentlySearchingAsteroids}
+                successfulSearch={successfulSearchAsteroids}
+                errorResponse={errorResponseAsteroids}
             />
         </div>
     )

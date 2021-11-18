@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+const apiKey = process.env.API_KEY;
+
 router.get('/', async function (req, res, next) {
     try {
         const dateFromRequest = new Date(req.query.date);
@@ -31,7 +33,6 @@ router.get('/', async function (req, res, next) {
 });
 
 async function nasaGetAsteroidRequest(date) {
-    const apiKey = process.env.API_KEY;
     const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=${apiKey}`);
     return response.data;
 }
