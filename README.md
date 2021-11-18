@@ -1,7 +1,7 @@
 # Getting Started
 
 ## About
-This website uses React and Express to display information about the solar system. It uses NASA APIs (the documentation can be found [here](http://api.nasa.gov/)).
+This website uses React and Express to display information about the solar system using NASA APIs. The API documentation can be found [here](http://api.nasa.gov/).
 ## Setting up the environment
 Update the .env file with a valid API_KEY for the NASA public APIs. An API key can be generated [here](https://api.nasa.gov/index.html#signUp).
 
