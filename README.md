@@ -1,38 +1,29 @@
 # Getting Started
 
-## TODO
-Tidy up Readme
-eslint
-check unused dependencies
-Create on package.json file to make it easier to install. Maybe docker?
+## About
+This website uses React and Express to display information about the solar system. It uses NASA APIs (the documentation can be found [here](http://api.nasa.gov/)).
+## Setting up the environment
+Update the .env file with a valid API_KEY for the NASA public APIs. An API key can be generated [here](https://api.nasa.gov/index.html#signUp).
 
-## NASA API
-The NASA API documentation can be found here:
-https://api.nasa.gov/
-
-## Environment config
-Create a .env file in the /api folder with the API_KEY for the NASA public APIs. An API key can be generated here:
-https://api.nasa.gov/index.html#signUp
+Then run:
+* `npm i`
+* `npm run start-ui` in one console
+* `npm run start-api` in a second console
 
 ## Available Scripts
-
 In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
+### `npm run start-ui`
+Runs the UI in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits.
 
-### `npm test`
+### `npm run start-api`
+Runs the API using nodemon on [http://localhost:3000](http://localhost:9000).
+The API will reload if you make edits.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
+### `npm run build-ui`
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
@@ -40,7 +31,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
