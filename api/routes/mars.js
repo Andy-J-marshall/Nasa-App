@@ -6,10 +6,9 @@ const apiKey = process.env.API_KEY;
 
 router.get('/', async function (req, res, next) {
     try {
-        // TODO pass in dates in the correct format rather than changing here? Create a shared function to do so? Same with asteroid api
-        let reqDate = new Date(req.query.date);
-        reqDate = reqDate.toISOString().substring(0, 10);
-        const nasaApiResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${reqDate}&api_key=${apiKey}`);
+        let dateFromRequest = new Date(req.query.date);
+        dateFromRequest = dateFromRequest.toISOString().substring(0, 10);
+        const nasaApiResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${dateFromRequest}&api_key=${apiKey}`);
 
         const photos = nasaApiResponse.data.photos;
         const numberOfPhotos = photos.length;

@@ -32,8 +32,6 @@ function Home() {
         }
     }
 
-    // TODO make it look nicer when selecting a new date. Currently it loads things in at weird times
-
     async function getMarsPhoto(date) {
         const options = {
             params: { date },

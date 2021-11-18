@@ -5,7 +5,7 @@ function Header() {
     return (
         <div>
             <Jumbotron style={{ textAlign: 'center', margin: 0 }}>
-                <h1 style={{ fontSize: '5rem' }}>NASA Information Centre</h1>
+                <h1 style={{ fontSize: '4rem' }}>NASA Information Centre</h1>
             </Jumbotron>
             <NavigationBar />
         </div>

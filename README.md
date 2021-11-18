@@ -1,10 +1,6 @@
 # Getting Started
 
 ## TODO
-More pages
-Menu bar
-Footer
-Tidy up css
 Tidy up Readme
 Create on package.json file to make it easier to install. Maybe docker?
 

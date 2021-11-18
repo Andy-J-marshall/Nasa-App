@@ -1,7 +1,6 @@
 import { Navbar, Nav } from 'react-bootstrap';
 
 function NavigationBar() {
-    // TODO Create an About page
     return (
         <div className='navigation-bar'>
             <Navbar variant='dark' bg='dark' expand='lg'>

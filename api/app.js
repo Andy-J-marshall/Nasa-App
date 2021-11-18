@@ -2,7 +2,6 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-// TODO add body-parser?
 const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
@@ -10,7 +9,6 @@ require('dotenv').config();
 const marsRouter = require('./routes/mars');
 const asteroidRouter = require('./routes/asteroid');
 
-// TODO tidy this file up
 const app = express();
 
 app.use(cors());
