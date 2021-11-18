@@ -1,5 +1,7 @@
 body {
   background-color: black;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 img {
@@ -13,29 +15,43 @@ img {
   font-size: 19px;
 }
 
+#footer {
+  background-color: white;
+  bottom: 0;
+  color: black;
+  font-size: 14px;
+  height: 100px;
+  margin: 0;
+  opacity: 0.9;
+  padding: 10px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
 #mars-photo {
   border: 2rem;
   border-radius: 3%;
-  width: 46%;
   height: 46%;
+  width: 46%;
 }
 
 .component {
   color: white;
-  margin: 2rem 2rem 0rem 0rem;
   font-size: 19px;
+  margin: 2rem 2rem 0rem 0rem;
 }
 
 .image-container {
+  color: white;
   font-size: 10px;
   position: relative;
-  color: white;
 }
 
 .top-left {
+  left: 25px;
   position: absolute;
   top: 53px;
-  left: 25px;
 }
 
 .asteroid {

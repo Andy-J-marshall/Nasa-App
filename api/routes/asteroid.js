@@ -83,8 +83,8 @@ function checkDateIsValid(date, acceptedDateRangeInYears = 20) {
 }
 
 function calculateDangerScore(numberOfAsteroids, numberOfDangerousAsteroids) {
-    const nonDangerousScore = (numberOfAsteroids - numberOfDangerousAsteroids) * 3;
-    const dangerousScore = numberOfDangerousAsteroids * 20;
+    const nonDangerousScore = (numberOfAsteroids - numberOfDangerousAsteroids) * 2;
+    const dangerousScore = numberOfDangerousAsteroids * 15;
     const totalScore = nonDangerousScore + dangerousScore;
     const dangerScore = totalScore < 100 ? totalScore : 100;
     return dangerScore;

@@ -15,7 +15,8 @@ function AsteroidInfo(props) {
             {currentlySearching && <Spinner animation='border' />}
             {!currentlySearching && errorResponse && !successfulSearch && <ErrorMessage message={errorResponse} />}
             {!currentlySearching && successfulSearch && asteroidResponse && <div>
-                <p>{asteroidResponse.totalNumber} asteroids in the vicinity of Earth ({asteroidResponse.totalDangerousNumber} potentially dangerous). Danger level:</p>
+                <p>{asteroidResponse.totalNumber} asteroids in the vicinity of Earth ({asteroidResponse.totalDangerousNumber} potentially dangerous).</p>
+                <p>Danger level:</p>
                 <ProgressBar
                     style={{ width: '46%' }}
                     now={asteroidResponse.dangerScore}
@@ -36,6 +37,10 @@ function AsteroidInfo(props) {
                     })}
                 </CardGroup>
             </div>}
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     )
 }

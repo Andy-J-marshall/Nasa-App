@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/header';
 import Home from './components/home';
+import Footer from './components/footer';
 
 // TODO create a custom cursor!
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <div id='app'>
       <Header />
       <Home />
-      {/* TODO add footer here */}
+      <Footer />
     </div>
   );
 }
