@@ -27,7 +27,6 @@ function Home() {
             setAsteroidResponse(res.data);
             setSuccessfulSearchAsteroids(true);
         } catch (error) {
-            console.log(error.message);
             setCurrentlySearchingAsteroids(false);
             setErrorResponseAsteroids(error.response.data);
             setSuccessfulSearchAsteroids(false);
@@ -47,7 +46,6 @@ function Home() {
             setMarsResponse(res.data);
             setSuccessfulSearchMars(true);
         } catch (error) {
-            console.log(error.message);
             setCurrentlySearchingMars(false);
             setErrorResponseMars(error.response.data);
             setSuccessfulSearchMars(false);
