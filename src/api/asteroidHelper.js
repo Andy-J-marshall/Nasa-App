@@ -5,7 +5,7 @@ const asteroidHelper = {
         spaceObjects.forEach((asteroid) => {
             const minDiam = asteroid.estimated_diameter.meters.estimated_diameter_min;
             const maxDiam = asteroid.estimated_diameter.meters.estimated_diameter_max;
-            const averageDiam = ((maxDiam * minDiam) / 2).toFixed(2);
+            const averageDiam = ((maxDiam + minDiam) / 2).toFixed(2);
             const asteroidInfo = {
                 name: asteroid.name,
                 hazardous: asteroid.is_potentially_hazardous_asteroid,
@@ -36,16 +36,19 @@ const asteroidHelper = {
         const earliestDateInt = earliestDate.setYear(earliestDate.getFullYear() - acceptedDateRangeInYears);
         const latestDateInt = latestDate.setYear(latestDate.getFullYear() + acceptedDateRangeInYears);
 
-        selectedDate.setHours(1, 0, 0, 0);
         const dateInt = selectedDate.getTime();
         if (dateInt < earliestDateInt || dateInt > latestDateInt) {
             // Invalid date, setting to today instead
             selectedDate = new Date();
         }
+        selectedDate.setHours(1, 0, 0, 0);
         return selectedDate;
     },
 
     calculateDangerScore(numberOfAsteroids, numberOfDangerousAsteroids) {
+        if (numberOfAsteroids < 0 || numberOfDangerousAsteroids < 0) {
+            return 0;
+        };
         const nonDangerousScore = (numberOfAsteroids - numberOfDangerousAsteroids) * 2;
         const dangerousScore = numberOfDangerousAsteroids * 15;
         const totalScore = nonDangerousScore + dangerousScore;

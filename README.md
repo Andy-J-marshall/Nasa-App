@@ -13,6 +13,10 @@ Then run:
 * `npm run start-ui` in one console
 * `npm run start-api` in a second console
 
+## Testing
+There are a sample selection of unit tests and UI integration tests. The integration tests use Cypress, and there are tests that test the full end to end flow as well as using mocked responses from the API.
+Note: ensure both the UI and API are running before running the UI tests.
+
 ## Available Scripts
 In the project directory, you can run:
 
@@ -30,11 +34,19 @@ The API will reload if you make edits.
 Runs the API using nodemon on [http://localhost:3000](http://localhost:9000).
 The API will reload if you make edits.
 
+### `npm run unit-tests`
+This will run the unit tests in the `test/unit` folder.
+
+### `npm run integration-tests`
+This will run the UI integration tests in the `cypress/integration` folder in headless mode.
+
+### `npm run cypress:open`
+This will open the Cypress app and allow you to debug the UI tests.
+
 ### `npm run build-ui`
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The build is minified and the filenames include the hashes.
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

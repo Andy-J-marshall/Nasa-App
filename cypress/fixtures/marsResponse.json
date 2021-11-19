@@ -1,0 +1,11 @@
+{
+  "imageFound": true,
+  "name": "Mast Camera",
+  "sol": 3284,
+  "img": "https://mars.nasa.gov/msl-raw-images/msss/03284/mcam/3284MR1009380001500643I01_DXXX.jpg",
+  "rover": {
+    "landingDate": "2012-08-06",
+    "launchDate": "2011-11-26",
+    "status": "active"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "totalNumber": 21,
+  "totalDangerousNumber": 1,
+  "dangerScore": 55,
+  "asteroids": [
+    {
+      "name": "2340 Hathor (1976 UA)",
+      "hazardous": true,
+      "diameterInMetres": "392.23",
+      "missDistanceInKm": "24028686.19",
+      "velocityKmpH": "36023.16"
+    },
+    {
+      "name": "(2008 NP3)",
+      "hazardous": false,
+      "diameterInMetres": "116.83",
+      "missDistanceInKm": "48148203.19",
+      "velocityKmpH": "43082.24"
+    },
+    {
+      "name": "(2009 WN25)",
+      "hazardous": false,
+      "diameterInMetres": "898.55",
+      "missDistanceInKm": "69678687.55",
+      "velocityKmpH": "139317.84"
+    },
+    {
+      "name": "(2016 EK158)",
+      "hazardous": false,
+      "diameterInMetres": "332.31",
+      "missDistanceInKm": "44183012.42",
+      "velocityKmpH": "61088.83"
+    },
+    {
+      "name": "(2017 TJ1)",
+      "hazardous": false,
+      "diameterInMetres": "311.56",
+      "missDistanceInKm": "71216054.51",
+      "velocityKmpH": "27108.23"
+    },
+    {
+      "name": "(2017 WZ12)",
+      "hazardous": false,
+      "diameterInMetres": "17.93",
+      "missDistanceInKm": "10948291.06",
+      "velocityKmpH": "25742.13"
+    },
+    {
+      "name": "(2019 UH7)",
+      "hazardous": false,
+      "diameterInMetres": "13.48",
+      "missDistanceInKm": "3666610.12",
+      "velocityKmpH": "21649.13"
+    },
+    {
+      "name": "(2021 RL)",
+      "hazardous": false,
+      "diameterInMetres": "239.63",
+      "missDistanceInKm": "19531621.31",
+      "velocityKmpH": "36851.50"
+    },
+    {
+      "name": "(2021 SQ2)",
+      "hazardous": false,
+      "diameterInMetres": "524.26",
+      "missDistanceInKm": "71508293.28",
+      "velocityKmpH": "51735.37"
+    },
+    {
+      "name": "(2021 TK14)",
+      "hazardous": false,
+      "diameterInMetres": "96.28",
+      "missDistanceInKm": "22967224.09",
+      "velocityKmpH": "38719.84"
+    },
+    {
+      "name": "(2021 UZ4)",
+      "hazardous": false,
+      "diameterInMetres": "34.96",
+      "missDistanceInKm": "2601635.60",
+      "velocityKmpH": "41161.02"
+    },
+    {
+      "name": "(2021 UW5)",
+      "hazardous": false,
+      "diameterInMetres": "7.30",
+      "missDistanceInKm": "405958.65",
+      "velocityKmpH": "54537.16"
+    },
+    {
+      "name": "(2021 UD6)",
+      "hazardous": false,
+      "diameterInMetres": "30.87",
+      "missDistanceInKm": "5601293.44",
+      "velocityKmpH": "27016.97"
+    },
+    {
+      "name": "(2021 UZ6)",
+      "hazardous": false,
+      "diameterInMetres": "39.95",
+      "missDistanceInKm": "1711453.44",
+      "velocityKmpH": "31540.37"
+    },
+    {
+      "name": "(2021 UQ7)",
+      "hazardous": false,
+      "diameterInMetres": "16.65",
+      "missDistanceInKm": "4422537.18",
+      "velocityKmpH": "25538.92"
+    },
+    {
+      "name": "(2021 VH)",
+      "hazardous": false,
+      "diameterInMetres": "5.12",
+      "missDistanceInKm": "29316.08",
+      "velocityKmpH": "27714.37"
+    },
+    {
+      "name": "(2021 VS)",
+      "hazardous": false,
+      "diameterInMetres": "87.00",
+      "missDistanceInKm": "6560949.27",
+      "velocityKmpH": "68273.77"
+    },
+    {
+      "name": "(2021 VG1)",
+      "hazardous": false,
+      "diameterInMetres": "24.75",
+      "missDistanceInKm": "426343.31",
+      "velocityKmpH": "43650.63"
+    },
+    {
+      "name": "(2021 VN1)",
+      "hazardous": false,
+      "diameterInMetres": "77.54",
+      "missDistanceInKm": "38637372.72",
+      "velocityKmpH": "10368.54"
+    },
+    {
+      "name": "(2021 VN2)",
+      "hazardous": false,
+      "diameterInMetres": "37.29",
+      "missDistanceInKm": "1521564.15",
+      "velocityKmpH": "45670.93"
+    },
+    {
+      "name": "(2021 VU26)",
+      "hazardous": false,
+      "diameterInMetres": "64.53",
+      "missDistanceInKm": "17087205.19",
+      "velocityKmpH": "33480.51"
+    }
+  ]
+}
