@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start-ui": "react-scripts start",
-    "start-api": "nodemon ./src/api/bin/www",
+    "start-api": "node ./src/api/bin/www",
+    "start-api-dev-mode": "nodemon ./src/api/bin/www",
     "build-ui": "react-scripts build"
   },
   "browserslist": {

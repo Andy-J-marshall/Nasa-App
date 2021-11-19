@@ -2,6 +2,9 @@
 
 ## About
 This website uses React and Express to display information about the solar system using NASA APIs. The API documentation can be found [here](http://api.nasa.gov/).
+
+## Prerequisites
+You will need to install [node](https://nodejs.org/en/download) and (optionally) [nodemon](https://www.npmjs.com/package/nodemon).
 ## Setting up the environment
 Update the .env file with a valid API_KEY for the NASA public APIs. An API key can be generated [here](https://api.nasa.gov/index.html#signUp).
 
@@ -20,6 +23,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.
 
 ### `npm run start-api`
+Runs the API using node on [http://localhost:3000](http://localhost:9000).
+The API will reload if you make edits.
+
+### `npm run start-api-dev-mode`
 Runs the API using nodemon on [http://localhost:3000](http://localhost:9000).
 The API will reload if you make edits.
 
