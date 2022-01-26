@@ -1,5 +1,4 @@
 describe('Integration tests', () => {
-    // TODO start the app and api automatically before test run?
     beforeEach(() => {
         cy.visit('/');
     });
@@ -21,6 +20,7 @@ describe('Integration tests', () => {
             .first()
             .click();
 
+            // TODO fails to find this sometimes - fix
         cy.get('#asteroid-info p').then((text) => {
             const txt = text.text();
             const count = txt.split(' ')[0];
@@ -49,5 +49,16 @@ describe('Integration tests', () => {
             cy.get('.badge-danger')
                 .should('have.length', parseInt(numberOfDangerousAsteroids));
         });
+    });
+
+    it('Check valid response code is returned from /asteroid and /mars APIs', () => {
+        cy.intercept({ path: '/asteroid**' }).as('asteroidRequest');
+        cy.intercept({ path: '/mars**' }).as('marsRequest');
+        cy.get('.react-datepicker__today-button')
+            .click();
+        cy.wait('@asteroidRequest').
+            its('response.statusCode').should('eq', 200);
+        cy.wait('@marsRequest').
+            its('response.statusCode').should('eq', 200);
     });
 });

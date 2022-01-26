@@ -1,0 +1,35 @@
+version: "2.1"
+
+networks:
+  local_container:
+services:
+  api:
+    build: 
+      context: ./src/api
+      dockerfile: Dockerfile
+    hostname: api
+    networks:
+      local_container:
+        aliases:
+          - "api"
+    tmpfs:
+      - /exec:exec
+    environment:
+      API_KEY: "${API_KEY}"
+    command: bash -c "npm run start-api && /bin/sleep 1500"
+    ports:
+      - "9000:9000"
+  ui:
+    build: 
+      context: ./src/
+      dockerfile: Dockerfile
+    hostname: ui
+    networks:
+      local_container:
+        aliases:
+          - "ui"
+    tmpfs:
+      - /exec:exec
+    command: bash -c "npm run start-ui && /bin/sleep 1500"
+    ports:
+      - "3000:3000"

@@ -1,38 +1,43 @@
 # Getting Started
 
 ## About
-This website uses React and Express to display information about the solar system using NASA APIs. The API documentation can be found [here](http://api.nasa.gov/).
+This website uses React and Express to display information about the solar system using NASA's public APIs. The NASA API documentation can be found [here](http://api.nasa.gov/).
 
 ## Prerequisites
-You will need to install [node](https://nodejs.org/en/download) and (optionally) [nodemon](https://www.npmjs.com/package/nodemon).
+You will need to install the following:
+* [node](https://nodejs.org/en/download) and (optionally) [nodemon](https://www.npmjs.com/package/nodemon).
+* [Docker](https://www.docker.com/)
+* If on macOS then install make e.g. `brew install make` 
 ## Setting up the environment
 Update the .env file with a valid API_KEY for the NASA public APIs. An API key can be generated [here](https://api.nasa.gov/index.html#signUp).
 
-Then run:
+If on macOS, run:
 * `npm i`
-* `npm run start-ui` in one console
-* `npm run start-api` in a second console
+* `make setup_local_infra`
+
+or run:
+* `npm i`
+* `npm run start-app`
 
 ## Testing
 There are a sample selection of unit tests and UI integration tests. The integration tests use Cypress, and there are tests that test the full end to end flow as well as using mocked responses from the API.
-Note: ensure both the UI and API are running before running the UI tests.
+* `npm run unit-tests`
+* `npm run integration-tests`
+
+## Troubleshooting
+Below are some common troubleshooting steps:
+* Ensure both the UI and API are running before running the UI tests
+* Make sure Docker is installed and running, and that is has been allocated enough resources
+* Make sure you have entered your API_KEY as an environment variable
+* After quitting the app, check that Docker has automatically cleared up the containers (`docker ps`). If not then manually stop them (`docker stop [containerId]`)
 
 ## Available Scripts
 In the project directory, you can run:
 
-### `npm run start-ui`
+### `npm run start-app`
 Runs the UI in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-
-### `npm run start-api`
-Runs the API using node on [http://localhost:3000](http://localhost:9000).
-The API will reload if you make edits.
-
-### `npm run start-api-dev-mode`
-Runs the API using nodemon on [http://localhost:3000](http://localhost:9000).
-The API will reload if you make edits.
+Runs the API using node on [http://localhost:9000](http://localhost:9000).
 
 ### `npm run unit-tests`
 This will run the unit tests in the `test/unit` folder.
@@ -43,10 +48,4 @@ This will run the UI integration tests in the `cypress/integration` folder in he
 ### `npm run cypress:open`
 This will open the Cypress app and allow you to debug the UI tests.
 
-### `npm run build-ui`
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- TODO commit a .env file -->

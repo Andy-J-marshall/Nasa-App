@@ -18,17 +18,6 @@ describe('Mocked tests', () => {
             its('request.url').should('contain', `?date=${date}`);
     });
 
-    it('Check valid response code is returned from /asteroid and /mars APIs', () => {
-        cy.intercept({ path: '/asteroid**' }).as('asteroidRequest');
-        cy.intercept({ path: '/mars**' }).as('marsRequest');
-        cy.get('.react-datepicker__today-button')
-            .click();
-        cy.wait('@asteroidRequest').
-            its('response.statusCode').should('eq', 200);
-        cy.wait('@marsRequest').
-            its('response.statusCode').should('eq', 200);
-    });
-
     it('Check asteroid mocked response returns the correct details', () => {
         cy.intercept({
             method: 'GET',
