@@ -19,9 +19,7 @@ describe('Integration tests', () => {
         cy.get('.react-datepicker__day--001')
             .first()
             .click();
-
-            // TODO fails to find this sometimes - fix
-        cy.get('#asteroid-info p').then((text) => {
+        cy.get('#asteroid-info p', { timeout: 10000 }).then((text) => {
             const txt = text.text();
             const count = txt.split(' ')[0];
             cy.wrap(count).as('numberOfAsteroids');
@@ -36,8 +34,7 @@ describe('Integration tests', () => {
         cy.get('.react-datepicker__day--002')
             .first()
             .click();
-
-        cy.get('#asteroid-info p').then((text) => {
+        cy.get('#asteroid-info p', { timeout: 10000 }).then((text) => {
             const txt = text.text();
             var dangerousCount = txt.substring(
                 txt.indexOf('(') + 1,
