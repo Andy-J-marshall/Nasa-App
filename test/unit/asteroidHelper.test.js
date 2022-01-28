@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const { calculateDangerScore, checkDateIsValid, processAsteroidData } = require('../src/api/asteroidHelper');
-const asteroids = require('./fixtures');
+const { calculateDangerScore, checkDateIsValid, processAsteroidData } = require('../../src/api/asteroidHelper');
+const asteroids = require('./asteroidFixtures');
 
 describe('Asteroid Helper unit tests', () => {
     describe('calculateDangerScore', () => {

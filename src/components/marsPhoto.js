@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import martianPicture from '../assets/martians.png';
 import ErrorMessage from './errorMessage';
-
-dotenv.config();
 
 function MarsWeather(props) {
     const marsResponse = props.marsResponse;

@@ -13,10 +13,10 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
-    "dotenv": "^8.2.0",
     "mocha": "^9.2.0"
   },
   "scripts": {
-    "start-api": "node ./bin/www"
+    "start-api": "node ./bin/www",
+    "start-api-dev-mode": "nodemon ./bin/www"
   }
 }

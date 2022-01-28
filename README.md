@@ -22,14 +22,15 @@ or run:
 The website will then be running on http://localhost:3000
 
 ## Testing
-There are a sample selection of unit tests and UI integration tests. The integration tests use Cypress. These test the full end to end flow as well as using mocked responses from the API.
+There are a sample selection of unit, API integration and UI tests. The UI tests use Cypress. These test the full end to end flow as well as using mocked responses from the API.
 * `npm run unit-tests`
 * `npm run integration-tests`
+* `npm run ui-tests`
 
 ## Troubleshooting
-Below are some common troubleshooting steps:
-* Ensure both the UI and API are running before running the UI tests
-* Make sure Docker is installed and running, and that is has been allocated enough resources
+Below are some troubleshooting steps:
+* Ensure the app is running before using `npm run integration-tests` or `npm run ui-tests`
+* Make sure Docker is installed and running and has been allocated enough resources
 * Make sure you have entered your API_KEY in the .env file
 * After quitting the app, check that Docker has automatically cleared up the containers (`docker ps`). If not then manually stop them (`docker stop [containerId]`)
 
@@ -44,7 +45,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 This will run the unit tests in the `test/unit` folder.
 
 ### `npm run integration-tests`
-This will run the UI integration tests in the `cypress/integration` folder in headless mode.
+This will run the API integration tests in the `test/integration` folder.
+
+### `npm run ui-tests`
+This will run the UI tests in the `cypress/integration` folder in headless mode.
 
 ### `npm run cypress:open`
 This will open the Cypress app and allow you to debug the UI tests.
