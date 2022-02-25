@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap';
 import martianPicture from '../assets/martians.png';
 import ErrorMessage from './errorMessage';
 
-function MarsWeather(props) {
+function MarsPhoto(props) {
     const marsResponse = props.marsResponse;
     const currentlySearching = props.currentlySearching;
     const errorResponse = props.errorResponse;
@@ -45,4 +45,4 @@ function renderImage(marsResponse) {
     )
 }
 
-export default MarsWeather;
+export default MarsPhoto;
